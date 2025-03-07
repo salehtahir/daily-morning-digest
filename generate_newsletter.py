@@ -1,28 +1,27 @@
-import requests
-import feedparser
-import random
+import openai
+import os
 
-# Fetch news (Google RSS)
-def get_news():
-    rss_url = "https://news.google.com/rss"
-    feed = feedparser.parse(rss_url)
-    return "".join(f"<li>{entry.title}</li>" for entry in feed.entries[:3])
+# Set up OpenAI API key from environment variable
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
-# Fetch a random Wikipedia fact
-def get_wikipedia_summary():
-    url = "https://en.wikipedia.org/api/rest_v1/page/random/summary"
-    response = requests.get(url).json()
-    return response.get("extract", "No fact available today.")
+def chatgpt_prompt(prompt):
+    """Function to generate content using ChatGPT"""
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[{"role": "system", "content": prompt}]
+    )
+    return response["choices"][0]["message"]["content"]
 
-# Random thought
-def get_quote():
-    quotes = [
-        "The best way to predict the future is to create it.",
-        "Do what you can, with what you have, where you are."
-    ]
-    return random.choice(quotes)
+# Generate daily content
+news_summary = chatgpt_prompt("Give me a brief summary of today's most important news in bullet points.")
+mental_model = chatgpt_prompt("Explain a useful mental model in one paragraph.")
+interesting_fact = chatgpt_prompt("Give me a short and fascinating fact.")
+quote_of_the_day = chatgpt_prompt("Give me an inspiring quote from a famous philosopher or leader.")
+wellness_tip = chatgpt_prompt("Give me one simple science-backed well-being tip.")
+life_pro_tip = chatgpt_prompt("Give me one practical life hack.")
+brain_teaser = chatgpt_prompt("Give me a fun brain teaser with an answer.")
 
-# Generate HTML content
+# Format as HTML
 html_content = f"""
 <!DOCTYPE html>
 <html lang="en">
@@ -33,13 +32,21 @@ html_content = f"""
 </head>
 <body>
     <h1>🌞 Your Daily Smart Newsletter</h1>
-    <h2>🌍 News:</h2>
-    <ul>{get_news()}</ul>
+    <h2>🌍 News Summary:</h2>
+    <p>{news_summary}</p>
+    <h2>🧠 Mental Model:</h2>
+    <p>{mental_model}</p>
     <h2>📖 Interesting Fact:</h2>
-    <p>{get_wikipedia_summary()}</p>
-    <h2>💡 Thought of the Day:</h2>
-    <p>{get_quote()}</p>
-    <footer>Updated daily via automation 🚀</footer>
+    <p>{interesting_fact}</p>
+    <h2>💡 Quote of the Day:</h2>
+    <p>{quote_of_the_day}</p>
+    <h2>😊 Well-being Tip:</h2>
+    <p>{wellness_tip}</p>
+    <h2>💪 Life Tip:</h2>
+    <p>{life_pro_tip}</p>
+    <h2>🧩 Brain Teaser:</h2>
+    <p>{brain_teaser}</p>
+    <footer>Updated daily via ChatGPT AI 🚀</footer>
 </body>
 </html>
 """
