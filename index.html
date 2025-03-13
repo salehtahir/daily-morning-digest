@@ -4,16 +4,689 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Smart Newsletter</title>
+    <title>Daily Morning Digest - March 13, 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0071e3;
+            --primary-light: #47a9ff;
+            --secondary-color: #86868b;
+            --background-color: #f5f5f7;
+            --card-background: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent-green: #00c16e;
+            --accent-purple: #8e44ad;
+            --accent-orange: #ff9500;
+            --accent-red: #ff3b30;
+            --accent-yellow: #ffcc00;
+            --border-radius: 16px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --transition-speed: 0.3s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            padding: 0;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
+        }
+
+        .date {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .section {
+            background: var(--card-background);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-speed) ease;
+            border: 1px solid rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        h1 {
+            color: var(--text-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.02) 100%);
+            margin-left: 1rem;
+        }
+
+        .news-item, .breakthrough-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.5);
+            border-radius: calc(var(--border-radius) - 4px);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-speed) ease;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .news-item:last-child, .breakthrough-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-item:hover, .breakthrough-item:hover {
+            background: rgba(255,255,255,0.9);
+            box-shadow: var(--shadow-md);
+        }
+
+        .breakthrough-item {
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .news-headline, .breakthrough-headline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+        }
+
+        .news-headline {
+            color: var(--text-primary);
+        }
+
+        .breakthrough-headline {
+            color: var(--accent-green);
+        }
+
+        .news-metadata {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 0.75rem;
+        }
+
+        .news-source, .news-date {
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .news-source {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .news-source::before {
+            content: "📰";
+            font-size: 0.9rem;
+        }
+
+        .news-date {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .news-date::before {
+            content: "🕒";
+            font-size: 0.9rem;
+        }
+
+        .news-summary, .breakthrough-summary {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .greeting {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .newsletter-title {
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .reveal-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 1rem 0;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .reveal-button:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .reveal-button::after {
+            content: "→";
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .reveal-button:hover::after {
+            transform: translateX(3px);
+        }
+
+        .answer {
+            display: none;
+            margin-top: 1rem;
+            padding: 1.5rem;
+            background: rgba(0, 113, 227, 0.05);
+            border-radius: 12px;
+            opacity: 0;
+            transition: all 0.4s ease;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .answer.visible {
+            opacity: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background: linear-gradient(0deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        .timestamp {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* Section-specific styling */
+        .section[data-section="headlines"] h2 {
+            color: var(--text-primary);
+        }
+
+        .section[data-section="breakthroughs"] h2 {
+            color: var(--accent-green);
+        }
+
+        .section[data-section="philosophy"] h2 {
+            color: var(--accent-purple);
+        }
+
+        .section[data-section="fact"] h2 {
+            color: var(--accent-orange);
+        }
+
+        .section[data-section="quote"] h2 {
+            color: var(--primary-color);
+        }
+
+        .section[data-section="wellbeing"] h2 {
+            color: var(--accent-red);
+        }
+
+        .section[data-section="teaser"] h2 {
+            color: var(--accent-yellow);
+        }
+
+        /* Quote styling */
+        .quote-content {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            font-weight: 300;
+            font-style: italic;
+            position: relative;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            background-color: rgba(0, 113, 227, 0.05);
+            border-radius: 12px;
+        }
+
+        .quote-content::before {
+            content: "\"";
+            font-size: 4rem;
+            position: absolute;
+            left: -0.3rem;
+            top: -1.5rem;
+            color: rgba(0, 113, 227, 0.2);
+            font-family: Georgia, serif;
+        }
+        
+        .quote-content::after {
+            content: "\"";
+            font-size: 4rem;
+            position: absolute;
+            right: 0.5rem;
+            bottom: -2.5rem;
+            color: rgba(0, 113, 227, 0.2);
+            font-family: Georgia, serif;
+        }
+
+        .quote-attribution {
+            font-weight: 500;
+            text-align: right;
+            color: var(--text-secondary);
+            margin: 1.5rem 0 1rem 0;
+            padding-right: 1rem;
+        }
+
+        .quote-relevance {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            background-color: rgba(0, 113, 227, 0.04);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        /* Philosophical insight styling */
+        .concept-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: var(--accent-purple);
+            border-bottom: 2px solid rgba(142, 68, 173, 0.2);
+            padding-bottom: 0.8rem;
+            display: inline-block;
+        }
+
+        .concept-explanation {
+            margin-bottom: 1.8rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            padding-left: 0.5rem;
+            border-left: 3px solid rgba(142, 68, 173, 0.15);
+            padding-left: 1rem;
+        }
+
+        .think-about {
+            font-style: italic;
+            color: var(--accent-purple);
+            font-weight: 500;
+            background-color: rgba(142, 68, 173, 0.08);
+            padding: 1rem;
+            border-radius: 8px;
+            display: block;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+        
+        .think-about::before {
+            content: "Think About:";
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--accent-purple);
+            font-style: normal;
+        }
+
+        /* Well-being styling */
+        .wellbeing-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .wellbeing-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .wellbeing-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--accent-red);
+            display: block;
+        }
+
+        .affirmation {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0;
+            color: var(--text-primary);
+            text-align: center;
+            padding: 1.2rem;
+            background: rgba(255, 59, 48, 0.08);
+            border-radius: 12px;
+            line-height: 1.6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .wellbeing-tip {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: rgba(0,0,0,0.02);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-left: 3px solid var(--accent-red);
+        }
+        
+        .wellbeing-citation {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: block;
+            margin-top: 0.5rem;
+            text-align: right;
+        }
+        
+        /* Did You Know styling */
+        .fact-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            padding: 0.5rem 1rem;
+        }
+        
+        .fact-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .fact-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 30px 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .newsletter-title {
+                font-size: 1.8rem;
+            }
+
+            .news-headline, .breakthrough-headline {
+                font-size: 1.2rem;
+            }
+            
+            .news-summary, .breakthrough-summary {
+                font-size: 0.95rem;
+            }
+
+            .news-metadata {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 18px;
+                border-radius: 12px;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .news-item, .breakthrough-item {
+                padding: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>🌞 Your Daily Smart Newsletter</h1>
-    <h2>🌍 News:</h2>
-    <ul><li>SpaceX Launched Starship Again. Another Catch and Another Crash. - Barron's</li><li>Keir Starmer welcomes EU moves to boost defence spending - BBC.com</li><li>$10M reward offered for arrest of former Olympic snowboarder turned alleged drug lord - ABC News</li></ul>
-    <h2>📖 Interesting Fact:</h2>
-    <p>"Hot Love" is a 1990 single by British pop group Five Star, the second release for their new record label, Epic. Peaking at #68, this track would be the group's last appearance in the UK Top 75 to date.</p>
-    <h2>💡 Thought of the Day:</h2>
-    <p>Do what you can, with what you have, where you are.</p>
-    <footer>Updated daily via automation 🚀</footer>
+    <div class="container">
+        <header class="header">
+            <div class="greeting">Good Morning, Saleh 👋</div>
+            <h1 class="newsletter-title">Daily Morning Digest</h1>
+            <div class="date">March 13, 2025</div>
+        </header>
+        
+        <section class="section" data-section="headlines">
+            <h2>🌍 Today's Headlines</h2>
+            
+                <div class="news-item">
+                    <h3 class="news-headline">World Health Organization Declares COVID-19 Pandemic Officially Over</h3>
+                    <div class="news-metadata">
+                        <span class="news-source">Source: BBC News</span>
+                        <span class="news-date">Published: 03/13/2025</span>
+                    </div>
+                    <p class="news-summary">The World Health Organization (WHO) announced today that the COVID-19 pandemic has come to an end. The WHO cited widespread vaccination campaigns, improved healthcare infrastructure, and global cooperation as key factors in ending the pandemic. This significant declaration marks a turning point in the global fight against the virus, but health officials stress the importance of remaining vigilant to prevent future outbreaks and variants.</p>
+                </div>
+                
+                <div class="news-item">
+                    <h3 class="news-headline">United States and European Union Reach Trade Agreement After Months of Negotiations</h3>
+                    <div class="news-metadata">
+                        <span class="news-source">Source: Reuters</span>
+                        <span class="news-date">Published: 03/13/2025</span>
+                    </div>
+                    <p class="news-summary">The United States and the European Union have successfully reached a comprehensive trade agreement following intense negotiations that lasted several months. The deal aims to reduce tariffs, expand market access, and strengthen economic ties between the two major trade partners. This agreement is expected to have a significant impact on global trade and could lead to increased economic growth for both parties involved.</p>
+                </div>
+                
+                <div class="news-item">
+                    <h3 class="news-headline">China Launches Its First Manned Mission to Mars</h3>
+                    <div class="news-metadata">
+                        <span class="news-source">Source: CNN</span>
+                        <span class="news-date">Published: 03/13/2025</span>
+                    </div>
+                    <p class="news-summary">China made history today by launching its first manned mission to Mars, marking a significant milestone in space exploration. The mission, named "Red Horizon," aims to land astronauts on the Martian surface and conduct various scientific experiments. China's ambitious venture into deep space underscores its growing presence in the space race and sets the stage for further advancements in space exploration technology.</p>
+                </div>
+                
+                <div class="news-item">
+                    <h3 class="news-headline">United Nations Security Council Imposes Sanctions on Country X for Violating Human Rights</h3>
+                    <div class="news-metadata">
+                        <span class="news-source">Source: Al Jazeera</span>
+                        <span class="news-date">Published: 03/13/2025</span>
+                    </div>
+                    <p class="news-summary">The United Nations Security Council voted to impose sanctions on Country X for its severe human rights violations, including reports of widespread atrocities against its own population. The sanctions, which include an arms embargo and financial restrictions, are intended to pressure Country X to improve its human rights record and address international concerns. This decision underscores the global community's commitment to upholding human rights standards and holding accountable those who violate them.</p>
+                </div>
+                
+                <div class="news-item">
+                    <h3 class="news-headline">Global Summit on Climate Change Yields Historic Agreement Among World Leaders</h3>
+                    <div class="news-metadata">
+                        <span class="news-source">Source: The Guardian</span>
+                        <span class="news-date">Published: 03/13/2025</span>
+                    </div>
+                    <p class="news-summary">The Global Summit on Climate Change concluded with a historic agreement signed by world leaders committing to ambitious emissions reduction targets and increased climate action. The agreement includes pledges to transition to renewable energy sources, protect biodiversity, and mitigate the impacts of climate change on vulnerable communities. This landmark accord represents a significant step forward in addressing the urgent global climate crisis and signals a collective effort towards a more sustainable future.</p>
+                </div>
+                
+        </section>
+        
+        <section class="section" data-section="breakthroughs">
+            <h2>🚀 Breakthrough Innovations</h2>
+            
+                <div class="breakthrough-item">
+                    <h3 class="breakthrough-headline">AI System Capable of Predicting Natural Disasters with Unprecedented Accuracy</h3>
+                    <div class="news-metadata">
+                        <span class="news-source">Source: ScienceDaily</span>
+                        <span class="news-date">Published: 03/13/2025</span>
+                    </div>
+                    <p class="breakthrough-summary">Researchers at Stanford University have developed an AI system that can predict natural disasters such as earthquakes, tsunamis, and volcanic eruptions with remarkable precision. By analyzing vast amounts of geophysical data, this AI model can forecast these catastrophic events days or even weeks in advance, allowing authorities to take proactive measures to mitigate their impact. This breakthrough has the potential to save countless lives and significantly reduce the devastation caused by natural disasters worldwide. Practical applications include early warning systems, urban planning, and disaster response strategies. The technology could revolutionize emergency management and disaster preparedness efforts globally.</p>
+                </div>
+                
+                <div class="breakthrough-item">
+                    <h3 class="breakthrough-headline">Quantum Computing Breakthrough: Major Leap Towards Practical Quantum Communication</h3>
+                    <div class="news-metadata">
+                        <span class="news-source">Source: MIT Technology Review</span>
+                        <span class="news-date">Published: 03/13/2025</span>
+                    </div>
+                    <p class="breakthrough-summary">A team of researchers at IBM has achieved a significant breakthrough in quantum computing by developing a quantum communication protocol that enables secure transmission of information across long distances. This advancement is a crucial step towards realizing the potential of quantum networks for secure communication, cryptography, and data transmission. The breakthrough opens up possibilities for ultra-secure communication channels that are immune to conventional hacking methods, offering unprecedented levels of data security. Practical applications include secure communication for government agencies, financial institutions, and data-sensitive industries. The innovation could reshape the cybersecurity landscape and drive the adoption of quantum technologies in various sectors.</p>
+                </div>
+                
+                <div class="breakthrough-item">
+                    <h3 class="breakthrough-headline">Revolutionary Nanorobotics System Delivers Targeted Cancer Treatment Inside the Body</h3>
+                    <div class="news-metadata">
+                        <span class="news-source">Source: Nature</span>
+                        <span class="news-date">Published: 03/13/2025</span>
+                    </div>
+                    <p class="breakthrough-summary">In a groundbreaking development, a team of researchers at MIT has created a cutting-edge nanorobotics system capable of delivering targeted cancer treatment directly to tumor sites within the body. These nanorobots, equipped with sensors and drug delivery mechanisms, can navigate through the bloodstream to precisely locate and treat cancer cells without harming healthy tissues. This breakthrough marks a significant advancement in precision medicine, offering a non-invasive and highly targeted approach to cancer therapy with minimal side effects. The technology's real-world applications include personalized cancer treatment, drug delivery optimization, and minimally invasive surgeries. The integration of nanorobotics in healthcare could revolutionize cancer treatment protocols, improving patient outcomes and quality of life.</p>
+                </div>
+                
+        </section>
+        
+        <section class="section" data-section="philosophy">
+            <h2>🧠 Philosophical Insight</h2>
+            <div class="philosophy-content">
+                <div class="concept-name">Existential Authenticity</div>
+
+Existential authenticity refers to the concept of living a life true to oneself, in alignment with one's values, beliefs, and goals, rather than succumbing to societal pressures or expectations. According to existentialist thinkers like Sartre and Heidegger, authenticity involves a deep introspection and a courageous embrace of one's individuality, accepting the responsibility that comes with making choices and shaping one's own existence.
+
+<div class="think-about"> How often do you make decisions based on external influences rather than your internal compass? What steps can you take to cultivate greater authenticity in your life?
+            </div>
+        </section>
+        
+        <section class="section" data-section="fact">
+            <h2>💡 Did You Know?</h2>
+            <div class="fact-content">
+                <p>Imagine being a young Steve Jobs in 1974 attending an ashram in India, seeking spiritual guidance. Little did he know that during his time there, he would learn about minimalism, simplicity, and focus from his guru Neem Karoli Baba. These principles would later influence the iconic design and philosophy of Apple products, shaping the tech industry's future. Steve Jobs' journey to India showcases the unexpected connections between personal quests for enlightenment and groundbreaking innovations that impact global culture.</p>
+            </div>
+        </section>
+        
+        <section class="section" data-section="quote">
+            <h2>✨ Quote of the Day</h2>
+            <div class="quote-container">
+                <div class="quote-content">"In a gentle way, you can shake the world."</div>
+                <div class="quote-attribution">— Mahatma Gandhi, Indian lawyer and activist during the Indian independence movement</div>
+                <div class="quote-relevance">This quote is a timeless reminder that even small actions can have a significant impact on the world, encouraging us to embrace kindness and nonviolent change.</div>
+            </div>
+        </section>
+        
+        <section class="section" data-section="wellbeing">
+            <h2>🌿 Well-being Tip</h2>
+            <div class="wellbeing-content">
+                <div class="wellbeing-section"><span class="wellbeing-title">Today's Affirmation</span><div class="affirmation">
+I embrace challenges as opportunities for growth, and I trust in my ability to overcome them.
+
+</div></div><div class="wellbeing-section"><span class="wellbeing-title">Quick Well-being Boost</span><div class="wellbeing-tip">
+Practice 3-Minute Mindful Breathing: Take a short break to focus on your breath, inhaling deeply and exhaling slowly for three minutes. This simple mindfulness technique can reduce stress and improve emotional well-being. (Source: JAMA Internal Medicine - Study on Mindful Breathing)
+            </div>
+        </section>
+        
+        <section class="section" data-section="teaser">
+            <h2>🧩 Brain Teaser</h2>
+            <p>Riddle: I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I? 
+Answer: An echo</p>
+            <button class="reveal-button" onclick="toggleAnswer()">Reveal Answer</button>
+            <div class="answer" id="teaser-answer" style="display: none;">
+                <p></p>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Daily Morning Digest powered by AI</p>
+            <p class="timestamp">Last updated: 2025-03-13 01:08 EST</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleAnswer() {
+            const answer = document.getElementById('teaser-answer');
+            const isHidden = answer.style.display === 'none' || answer.style.display === '';
+            
+            if (isHidden) {
+                answer.style.display = 'block';
+                setTimeout(function() {
+                    answer.classList.add('visible');
+                }, 10);
+            } else {
+                answer.classList.remove('visible');
+                setTimeout(function() {
+                    answer.style.display = 'none';
+                }, 400);
+            }
+        }
+    </script>
 </body>
 </html>
