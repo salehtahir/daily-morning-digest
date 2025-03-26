@@ -434,6 +434,7 @@ html_content = f"""
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3QgeD0iNCIgeT0iOCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjIwIiBmaWxsPSIjZmZmIiBzdHJva2U9IiMwMDcxZTMiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjI0IiBjeT0iNiIgcj0iNCIgZmlsbD0iI2ZmY2MwMCIvPjxyZWN0IHg9IjgiIHk9IjEyIiB3aWR0aD0iOCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmY5NTAwIi8+PHJlY3QgeD0iMTgiIHk9IjEyIiB3aWR0aD0iNiIgaGVpZ2h0PSI0IiBmaWxsPSIjNDdhOWZmIi8+PHJlY3QgeD0iOCIgeT0iMTgiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyIiBmaWxsPSIjODY4NjhiIi8+PHJlY3QgeD0iOCIgeT0iMjIiIHdpZHRoPSIxMiIgaGVpZ2h0PSIyIiBmaWxsPSIjODY4NjhiIi8+PC9zdmc+">
     <title>Daily Morning Digest - {formatted_date}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
